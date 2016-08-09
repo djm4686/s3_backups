@@ -12,12 +12,12 @@ config.read(os.path.join(os.path.abspath(os.path.dirname(__file__)), '..', 'conf
 ACCESS_KEY_ID = config.get("amazon", "key") 
 SECRET_ACCESS_KEY = config.get("amazon", "secret") 
 def get_bucket():
-  bucket_name = 'dan-backups-us'
+  bucket_name = config.get("amazon", "bucket")
   conn = boto.connect_s3(ACCESS_KEY_ID, SECRET_ACCESS_KEY)
   return conn.get_bucket(bucket_name, validate=False)
 
 def get_folders():
-  folders = ["/Users/dmadden/random/pem", "/Users/dmadden/random/keys"]
+  folders = config.get("amazon", "folders").split(",") 
   return folders
 
 def get_files(folders):

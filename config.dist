@@ -1,3 +1,5 @@
 [amazon]
 key=*****
 secret=*****
+folders=sep,folder,paths,by,comma
+bucket=bucket_name
